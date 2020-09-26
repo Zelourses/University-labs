@@ -1,0 +1,90 @@
+#my-button {
+    display: flex;
+    border-radius: 5px;
+    background-color: rgb(255, 104, 0);
+    border: 1px solid rgb(107, 16, 150);
+    text-align: center;
+    height: 45px;
+    width: 250px;
+}
+body{
+    margin: 0;
+    background: url("../img/background1.gif") no-repeat center top fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-size: 16px;
+}
+*{
+    box-sizing: border-box;
+    cursor: url("../img/Retrowave.cur"),default;
+    font-family: "Comic Sans MS", sans-serif;
+}
+.retrowave {
+    text-transform: uppercase;
+    background: linear-gradient(to top, #e20ccc 35%, #c646ff 50%, #26c1f1 15%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+.header {
+    background: #eb0087;
+    font-family: monospace;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px;
+}
+.container {
+    width: 950px;
+    margin: auto;
+}
+.content > .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+}
+.clock_and_text {
+    display: flex;
+}
+.clock_area {
+    margin-top: 20vh;
+    flex: 4;
+}
+.clock {
+    padding: 15px;
+    background: #ff6800;
+    color: #eb0087;
+    position: absolute;
+    font-weight: bold;
+    margin-right: 50%;
+    border-radius: 4px;
+}
+.text_area {
+    flex: 5;
+    margin-top: 12vh;
+    text-align: center;
+}
+.buttons {
+    margin-left: 20%;
+    margin-top: 30px;
+}
+.running {
+    position: absolute;
+    transition: all 0.3s linear 0s;
+}
+.lied {
+    text-shadow: 0 0 5px blue;
+    left: 50%;
+}
+.lied1 {
+    left: 2%;
+}
+.genuine {
+   position: fixed;
+    right: 2%;
+    top: 3.5%;
+}
+

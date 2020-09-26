@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+>
+<h:head>
+   <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/default/img/favicon.png"/>
+   <meta name="viewport" content="width=device-width,initial-scale=1"/>
+   <title>ЪУЪ ДАЙТЕ ЛК ЪУЪ</title>
+   <h:outputStylesheet library="default" name="styles/index.css"/>
+</h:head>
+<h:body>
+   <div class="header">
+      <div class="container">
+         <div class="retrowave">
+            <span class="running retrowave lied1">Барсуков Илья Александрович, вариант 201041</span> &emsp; <span class="running retrowave lied"> На основную?</span> <h:form><h:commandLink styleClass="retrowave genuine" action="main?faces-redirect=true" value="На основную"/></h:form>
+         </div>
+      </div>
+   </div>
+   <div class="content container">
+      <div class="clock_and_text">
+         <div class="text_area">
+            <div class="retrowave running">Добро пожаловать на сайт! На данный момент этим сайтом пользовалось 1.5 человека</div>
+         </div>
+         <div class="clock_area">
+            <div class="clock running" id="clock"></div>
+         </div>
+      </div>
+   </div>
+   <div class="content container">
+      <div class="buttons">
+         <div><input type="button" value="На основную" id="my-button" class="running"/></div>
+      </div>
+   </div>
+
+   <h:outputScript library="default" name="scripts/running_text.js"/>
+   <h:outputScript library="default" name="scripts/clock.js"/>
+</h:body>
+</html>

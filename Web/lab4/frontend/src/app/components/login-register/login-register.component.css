@@ -1,0 +1,17 @@
+@import "../../app.component.css";
+.register-component {
+    background: blue;
+    display: inline-block;
+    margin-bottom: 10px;
+    width: calc(250px + 10vw);
+    border-radius: 10px;
+}
+.register {
+    text-align: center;
+}
+.register-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+

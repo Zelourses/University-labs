@@ -1,0 +1,66 @@
+body {
+    background: url(../images/background.gif) no-repeat center top fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-size: 20px;
+
+}
+*{
+    text-shadow: 2px 2px 3px #00ecf1;
+    font-family: "Comic Sans MS",Serif;
+    font-style: italic;
+    cursor: url("../images/Retrowave.cur"),default;
+}
+label {
+    text-transform: uppercase;
+    background: linear-gradient(to top, #e20ccc 35%, #c646ff 50%, #26c1f1 15%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+TD#header {
+    background: #964479;
+    text-align: center;
+    font-family: serif;
+    font-size: calc(10px + 1vw);
+    flex: 1;
+    border-radius: 10px;
+    border: none;
+    padding: 2px;
+
+}
+tr#t{
+    background: #964479;
+
+}
+#maket {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 15px;
+    border: none;
+
+}
+TH,TD{
+    text-align:center;
+    vertical-align:middle;
+
+}
+TABLE,TH,TD{
+    /*border:2px solid #a85824;*/
+    border-collapse:collapse;
+    height: calc(15px + 1vw);
+    padding: 10px;
+}
+.table{
+    background: rgba(121, 0, 100, 0.54);
+    margin: 30px auto auto;
+    border-radius: 5px;
+    border: 5px solid #a85824;
+}
+.text{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
+<HEAD>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Моя лабораторная работа</title>
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="./images/favicon.png" />
+</HEAD>
+<body>
+<table id="maket">
+    <tr>
+        <td id="header" colspan="2" >
+            <div ><label>БАРСУКОВ ИЛЬЯ P3201 ВАРИАНТ 201000</label></div>
+        </td>
+    </tr>
+    <tr>
+        <td id="leftcol">
+            <svg class="graph">
+
+                <path d="M 500 100
+                            h -200 v 400 h 200 z m 0 400
+                            h -400 l 400 200 z m 0 400
+                            a 400 400 0 0 0 400 -400 h -400"
+                      fill="#6668ff" stroke-width="2"></path>
+
+                <path d=" M 0 500
+                            l 1000 0 -25 -15
+                            m 25 15
+                            l -25 15
+                            M 100 490 l 0 20
+                            M 300 490 l 0 20
+                            M 700 490 l 0 20
+                            M 900 490 l 0 20
+
+                            M 500 1000
+                            l 0 -1000 -15 30
+                            m 15 -30
+                            l 15 30
+                            M 490 900 l 20 0
+                            M 490 700 l 20 0
+                            M 490 300 l 20 0
+                            M 490 100 l 20 0" stroke="black" fill="transparent" stroke-width="1"></path>
+
+                <text x="8%" y="47.5%" font-size="45" class="graph-text" >-R</text>
+                <text x="24%" y="47.5%" font-size="45" class="graph-text ">-R/2</text>
+                <text x="66%" y="47.5%" font-size="45" class="graph-text ">R/2</text>
+                <text x="89%" y="47.5%" font-size="45" class="graph-text ">R</text>
+                <text x="52%" y="91.5%" font-size="45" class="graph-text ">-R</text>
+                <text x="52%" y="71.5%" font-size="45" class="graph-text ">-R/2</text>
+                <text x="52%" y="31.5%" font-size="45" class="graph-text ">R/2</text>
+                <text x="52%" y="11.5%" font-size="45" class="graph-text ">R</text>
+                <text x="46.5%" y="54%" font-size="45" class="graph-text ">0</text>
+                <text x="97.5%" y="54.5%" font-size="40" class="graph-view__text-x ">x</text>
+                <text x="45%" y="2%" font-size="40" class="graph-view__text-x ">y</text>
+
+            </svg>
+        </td>
+        <td id="rightcol">
+
+                <form action="php/script.php" id="form" method="get">
+                    <div class="XInput ">
+                        <label >Выберите число X </label>
+                        <p class="r">
+                            <input type="radio" name="X[]" id="x-3" value="-3">-3
+                            <input type="radio" name="X[]" id="x-2" value="-2">-2
+                            <input type="radio" name="X[]" id="x-1" value="-1">-1
+                            <input type="radio" name="X[]" id="x0" value="0">0
+                            <input type="radio" name="X[]" id="x1" value="1">1
+                            <input type="radio" name="X[]" id="x2" value="2">2
+                            <input type="radio" name="X[]" id="x3" value="3">3
+                            <input type="radio" name="X[]" id="x4" value="4">4
+                            <input type="radio" name="X[]" id="x5" value="5">5
+
+                    </div>
+                    <div class="YInput">
+                        <label >Выберите число Y </label>
+                        <p>
+                            <input type="text" id="Y" name="Y" maxlength="7" placeholder="(-3; 5)">
+                    </div>
+                    <div class="RInput">
+                        <label >Выберите число R </label>
+                        <p>
+                            <input type="text" id="R" name="R" maxlength="7" placeholder="(2;5)">
+                    </div>
+                    <div class="err-msg hidden " id="err-msg"><label  id="text"></label></div>
+                    <button type="submit" class="Submit"><div class="r">Проверить</div></button>
+
+
+                </form>
+            <button onclick="   alert('YOU FELL FOR IT FOOL! NEBESNAYA KARA (ПСЖ)');
+                               let r = 0; setInterval(() => {r += 0.2; let els = document.querySelectorAll('*'); for (var i = 0; i < els.length; i++) {els[i].style.color = `rgb(${(Math.sin(r+i)+1)*127}, ${(Math.sin(r + i + 256*1/3)+1)*127}, ${(Math.sin(r + i + 256*2/3)+1)*127})`};},1000/30);void 0;" class="SkyRage"></button>
+
+        </td>
+    </tr>
+</table>
+<script src="js/script.js"></script>
+</body>
+</html>

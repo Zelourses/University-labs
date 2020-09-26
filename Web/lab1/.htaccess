@@ -1,0 +1,2 @@
+ErrorDocument 404 /badData.html
+#ErrorDocument 418 /teapot.html

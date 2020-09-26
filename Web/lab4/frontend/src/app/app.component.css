@@ -1,0 +1,13 @@
+*{
+    box-sizing: border-box;
+    cursor: url("src/assets/img/Retrowave.cur"),default;
+    font-family: "Comic Sans MS", sans-serif;
+}
+.retrowave {
+    text-transform: uppercase;
+    background: linear-gradient(to top, #e20ccc 35%, #c646ff 50%, #26c1f1 15%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+

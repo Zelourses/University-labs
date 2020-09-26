@@ -1,0 +1,81 @@
+@import "../../app.component.css";
+.main-container {
+    display: flex;
+}
+.area {
+    flex: 1;
+}
+.area-canvas{
+    float: right;
+    background: rgba(255, 255, 255, 0.51);
+    border: none;
+    margin: 5px 30px 10px 5px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
+}
+.area-form {
+    display: inline-grid;
+    width: 75%;
+    /*padding: 10px;*/
+    margin-left: 10%;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
+}
+.area-form-container {
+    flex: 1;
+}
+.radiobutton {
+    display: flex;
+}
+.inputArea {
+
+}
+.inputY{
+   width: 100%!important;
+}
+.radiobutton-group-X {
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
+}
+.radiobutton-group-R {
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
+}
+.input-Y {
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+}
+.submit-button {
+    margin: 10px;
+}
+.custombar1 .ui-scrollpanel-wrapper {
+    border-right: 9px solid #f4f4f4;
+}
+
+.custombar1 .ui-scrollpanel-bar {
+    background-color: #1976d2;
+    opacity: 1;
+    transition: background-color .3s;
+}
+
+.custombar1 .ui-scrollpanel-bar:hover {
+    background-color: #135ba1;
+}
+@media (max-width: 896px) {
+    .main-container {
+        display: inline-grid;
+    }
+    .inputY {
+        width: auto;
+        min-width: auto;
+    }
+    
+}
+

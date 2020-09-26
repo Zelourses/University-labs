@@ -1,0 +1,158 @@
+*{
+    box-sizing: border-box;
+    cursor: url("../misc/Retrowave.cur"),default;
+    font-family: "Comic Sans MS", sans-serif;
+}
+body{
+     margin: 0;
+     background: url("../misc/bakcground1.gif") no-repeat center top fixed;
+     -webkit-background-size: cover;
+     -moz-background-size: cover;
+     -o-background-size: cover;
+     background-size: cover;
+     font-size: 16px;
+ }
+.retrowave {
+    text-transform: uppercase;
+    background: linear-gradient(to top, #e20ccc 35%, #c646ff 50%, #26c1f1 15%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+.graph-view {
+    width: 500px;
+    height: 500px;
+    margin: 0 50px;
+    user-select: none;
+    background: #115dac;
+}
+.submit {
+    background: #ff6800;
+    border: none;
+    border-radius: 5px;
+    font-size: 24px;
+    max-width: 70%;
+    margin: auto;
+    display: block;
+    padding: 10px 20px;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, .1);
+    transition: box-shadow 300ms, background 300ms;
+    outline: none;
+}
+.Submit:hover {
+    animation: hover 1s infinite;
+
+}
+@keyframes hover {
+    0%{
+        transform: rotate(3deg);
+    }
+    50%{
+        transform: rotate(-3deg);
+    }
+    100%{
+        transform: rotate(3deg);
+    }
+}
+.button-container {
+    background: rgba(107, 16, 150, 0.51);
+    padding: 10px;
+    margin: 5px 5px 10px 5px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, .2);
+    flex: 1;
+}
+.panel-content {
+    display: flex;
+    justify-content: space-around;
+}
+.container {
+    width: 950px;
+    margin: auto;
+}
+
+.panel {
+    background: rgba(107, 16, 150, 0.51);
+    padding: 10px;
+    margin: 5px 5px 10px 5px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, .2);
+}
+.ss{
+    flex:2;
+}
+
+.header {
+    background: #eb0087;
+    font-family: monospace;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px;
+}
+.content > .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+}
+.graph-container {
+    flex: 2;
+}
+
+.SkyRage{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    opacity: 0.2;
+    width: 100vw;
+    height: 5vh;
+    border-radius: 100px;
+    background: red;
+}
+.err-msg {
+    color: #f1a200;
+}
+.hidden {
+    display: none;
+}
+.panel label {
+    margin: 5px 0;
+}
+@media (max-width: 1080px) {
+    .container {
+        width: 680px;
+    }
+
+    .graph-view {
+        width: 370px;
+        height: 370px;
+    }
+}
+
+@media (max-width: 720px) {
+    .container {
+        width: 400px;
+    }
+
+    .graph-view {
+        width: 350px;
+        height: 350px;
+        margin: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+    }
+
+    .graph-view {
+        width: 250px;
+        height: 250px;
+        margin: 20px;
+        font-size: 14px;
+    }
+}

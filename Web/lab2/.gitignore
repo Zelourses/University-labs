@@ -1,0 +1,5 @@
+# Default ignored files
+/lab2.iws
+src/credentials.json
+# Project exclude paths
+/out/

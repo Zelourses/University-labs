@@ -1,0 +1,115 @@
+<div>
+    <div class="main-container">
+            <div class="area">
+                <div class="area-form">
+                    <canvas #canvas class="area-canvas" width="{{400}}" height="{{400}}" (mousemove)="mouseMove($event)" (click)="mouseClick()" (mouseleave)="mouseLeave()" (mousedown)="mouseDown()" (mouseover)="mouseOver()"></canvas>
+                </div>
+            </div>
+        <div class="area-form-container">
+            <form [formGroup]="areaform">
+            <div class="area-form">
+                <div class="radiobutton-group-X">
+                   <span class="retrowave">X</span>
+                    <div class="radiobutton">
+                        <div class="ui-g-12"><p-radioButton name="group1" value="-3" label="-3" formControlName="X" inputId="X-3"></p-radioButton></div>
+                        <div class="ui-g-12"><p-radioButton name="group1" value="-2" label="-2" formControlName="X" inputId="X-2"></p-radioButton></div>
+                        <div class="ui-g-12"><p-radioButton name="group1" value="-1" label="-1" formControlName="X" inputId="X-1"></p-radioButton></div>
+                    </div>
+                    <div class="radiobutton">
+                        <div class="ui-g-12"><p-radioButton name="group1" value="0" label="0" formControlName="X" inputId="X0"></p-radioButton></div>
+                        <div class="ui-g-12"><p-radioButton name="group1" value="1" label="1" formControlName="X" inputId="X1"></p-radioButton></div>
+                        <div class="ui-g-12"><p-radioButton name="group1" value="2" label="2" formControlName="X" inputId="X2"></p-radioButton></div>
+                    </div>
+                    <div class="radiobutton">
+                        <div class="ui-g-12"><p-radioButton name="group1" value="3" label="3" formControlName="X" inputId="X3"></p-radioButton></div>
+                        <div class="ui-g-12"><p-radioButton name="group1" value="4" label="4" formControlName="X" inputId="X4"></p-radioButton></div>
+                        <div class="ui-g-12"><p-radioButton name="group1" value="5" label="5" formControlName="X" inputId="X5"></p-radioButton></div>
+                    </div>
+                </div>
+                <div class="input-Y">
+                    <div class="ui-g-12 ">
+                        <label for="Y" class="inputArea retrowave" style="display:block;margin-bottom:4px">Y</label>
+                            <input id="Y" type="text" pInputText pKeyFilter="money" placeholder="(-3...3)" class="inputY"
+                                   formControlName="Y">
+
+                    </div>
+                </div>
+                <div class="radiobutton-group-R">
+                    <span class="retrowave">R</span>
+                    <div class="radiobutton">
+                        <div class="ui-g-12"><p-radioButton name="group2" value="-3" label="-3" formControlName="R" inputId="R-3"></p-radioButton></div>
+                        <div class="ui-g-12"><p-radioButton name="group2" value="-2" label="-2" formControlName="R" inputId="R-2"></p-radioButton></div>
+                        <div class="ui-g-12"><p-radioButton name="group2" value="-1" label="-1" formControlName="R" inputId="R-1"></p-radioButton></div>
+                    </div>
+                    <div class="radiobutton">
+                        <div class="ui-g-12"><p-radioButton name="group2" value="0" label="0" formControlName="R" inputId="R0"></p-radioButton></div>
+                        <div class="ui-g-12"><p-radioButton name="group2" value="1" label="1" formControlName="R" inputId="R1"></p-radioButton></div>
+                        <div class="ui-g-12"><p-radioButton name="group2" value="2" label="2" formControlName="R" inputId="R2"></p-radioButton></div>
+                    </div>
+                    <div class="radiobutton">
+                        <div class="ui-g-12"><p-radioButton name="group2" value="3" label="3" formControlName="R" inputId="R3"></p-radioButton></div>
+                        <div class="ui-g-12"><p-radioButton name="group2" value="4" label="4" formControlName="R" inputId="R4"></p-radioButton></div>
+                        <div class="ui-g-12"><p-radioButton name="group2" value="5" label="5" formControlName="R" inputId="R5"></p-radioButton></div>
+                    </div>
+                </div>
+                <div class="submit-button">
+                    <p-button  [disabled]="isRDisabled" label="Проверить" (click)="onCheck()"></p-button>
+                </div>
+            </div>
+
+            </form>
+        </div>
+    </div>
+    <div>
+        <button style="background: #eb0087; width: 10px" (click)="show()"></button>
+    </div>
+    <div>
+        <p-table [value]="Value" >
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>X</th>
+                        <th>Y</th>
+                        <th>R</th>
+                        <th>Попадание</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-point>
+                    <tr>
+                        <td>{{point.x}}</td>
+                        <td>{{point.y}}</td>
+                        <td>{{point.r}}</td>
+                        <td>{{point.result}}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        <p-sidebar [(visible)]="display" [fullScreen]="true">
+            <div>
+                <p-button (click)="hide()" label="выйти"></p-button>
+                <div>
+                    <form [formGroup]="Code">
+                        <div>
+                            <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" formControlName="code"></textarea>
+                        </div>
+                        <div>
+                            <p-button label="Отправить" (click)="sendData()"></p-button>
+                        </div>
+                    </form>
+                    <div>
+                        <p-scrollPanel [style]="{width: '100%', height: '200px'}" styleClass="custombar1" #panel>
+                            <div style="padding:1em;line-height:1.5">
+                                {{Answer}}
+                            </div>
+                        </p-scrollPanel>
+                    </div>
+                    <p-accordion class="ui-accordion">
+                        <p-accordionTab header="Документация">
+                            WIP
+                        </p-accordionTab>
+                    </p-accordion>
+                </div>
+            </div>
+        </p-sidebar>
+    </div>
+</div>
+
+

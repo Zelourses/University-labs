@@ -1,0 +1,186 @@
+#maket {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 15px;
+
+}
+TD {
+    vertical-align: top;
+    padding: 5px;
+
+}
+TD#header {
+    background: #964479;
+    text-align: center;
+    font-family: serif;
+    font-size: calc(10px + 1vw);
+    flex: 1;
+    border-radius: 10px;
+
+
+}
+TD#leftcol {
+    flex: 6;
+    padding: 20px;
+    text-align: center;
+
+}
+TD#rightcol {
+    flex: 5;
+    margin-bottom: 100px    ;
+}
+tr{
+    display: flex;
+}
+svg{
+    border-style: inset;
+    background: white;
+    padding: 13px;
+    width: 60%;
+    box-sizing: border-box;
+}
+body {
+    background: url(../images/background.gif) no-repeat center top fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-size: 20px;
+
+
+}
+body::-webkit-scrollbar{
+    display: none;
+}
+
+*{
+    text-shadow: 2px 2px 3px #00ecf1;
+    font-family: "Comic Sans MS",Serif;
+    font-style: italic;
+    cursor: url("../images/Retrowave.cur"),default;
+
+}
+
+label,.r{
+        text-transform: uppercase;
+        background: linear-gradient(to top, #e20ccc 35%, #c646ff 50%, #26c1f1 15%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+}
+.XInput{
+    text-align: right;
+    padding-right: 5px;
+    background: rgba(107, 16, 150, 0.51);
+    border-radius: 5px;
+}
+.YInput{
+    text-align: center;
+    padding: 5px;
+    background: rgba(107, 16, 150, 0.51);
+    border-radius: 5px;
+}
+.RInput{
+    margin-top: 20px;
+    text-align: left;
+    padding: 0 0 5px 5px;
+    background: rgba(107, 16, 150, 0.51);
+    border-radius: 10px;
+
+}
+
+.BadData{
+    background-image: url("../images/BadData2.gif");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-size: 20px;
+}
+.BadData-text {
+    text-align: center;
+    background-color: bisque;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-position: left;
+}
+.button {
+    width: 30%;
+    height: calc(40px + 1vw);
+    margin: 10px auto;
+    border-radius: 10px;
+    outline: none;
+    font-size: xx-large;
+}
+
+.SkyRage{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    opacity: 0.2;
+    width: 100vw;
+    height: 5vh;
+    border-radius: 100px;
+    background: red;
+}
+.Submit{
+    width: 60%;
+    height: calc(30px + 1vw);
+    display: block;
+    margin: 10px auto;
+    border-radius: 10px;
+    position: relative;
+    outline: none;
+    font-size: calc(13px + 1vw);
+    background: #ac3659;
+
+}
+.Submit:hover {
+    animation: hover 1s infinite;
+
+}
+.Submit:hover:before {
+    display: block;
+    position: absolute;
+}
+
+@keyframes hover {
+    0%{
+        transform: rotate(3deg);
+    }
+    50%{
+        transform: rotate(-3deg);
+    }
+    100%{
+        transform: rotate(3deg);
+    }
+}
+input{
+    margin: 1%;
+    padding: 0.4%
+}
+.err-msg{
+    background: rgba(107, 16, 150, 0.51);
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.hidden{
+    display: none;
+}
+
+@media (max-width: 700px) {
+    tr {
+        flex-direction: column;
+    }
+}
+@media (max-width: 550px) {
+    svg{
+        padding: 0;
+        width: 100%;
+    }
+    td#leftcol{
+        padding: 0;
+    }
+}

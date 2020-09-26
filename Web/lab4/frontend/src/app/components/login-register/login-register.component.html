@@ -1,0 +1,23 @@
+<app-container>
+    <div class="register">
+        <div class="register-component">
+            <h1 class="retrowave">Регистрация / Вход</h1>
+            <form class="register-form" [formGroup]="registerForm" (ngSubmit)="OnSubmit()" novalidate>
+                <div class="ui-float-label" style="margin-top: 20px">
+                    <input id="float-input1" type="text" pInputText  formControlName="username" >
+                    <label for="float-input1" >Имя пользователя</label>
+                </div>
+                <div style="margin-top: 20px">
+                    <label>
+                        <input width="50" type="password" pPassword promptLabel="Введите пароль" weakLabel="Слабенько" mediumLabel="Средненько"
+                               strongLabel="Нормально"  formControlName="password"/>
+                    </label>
+                </div>
+                <span style="margin: 10px">
+                    <button pButton type="submit" label="Зарегистрироваться" class="ui-button-raised" (click)="onRegisterSubmit()"></button>
+                    <button pButton type="submit" label="Войти" class="ui-button-raised" style=" margin-left: 20px" (click)="onLoginSubmit()" ></button>
+                </span>
+            </form>
+        </div>
+    </div>
+</app-container>
