@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<project name="Lab_3" default="compile" xmlns:ac="antlib:net.sf.antcontrib">
+    <description>
+        MPI - lab3 - Barsukov Ilya - P3201 - 21640
+    </description>
+
+    <taskdef resource="net/sf/antcontrib/antlib.xml"  uri="antlib:net.sf.antcontrib">
+        <classpath>
+            <fileset dir="./lib/ant-contrib"/>
+        </classpath>
+    </taskdef>
+
+    <tstamp>
+        <format property="TODAY_RU" pattern="HH:mm:ss:sss dd-MM-yyyy zzz" locale="RU" />
+    </tstamp>
+
+
+    <property file="build.properties"/>
+    <property name="name" value="${ant.project.name}"/>
+    <property name="classes" value="${build}/${class}"/>
+
+    <path id="classpath">
+        <fileset dir="${lib}" includes="**/*.jar"/>
+    </path>
+
+    <target name="compile">
+        <mkdir dir="${classes}"/>
+        <javac srcdir="${src}" destdir="${classes}" includeantruntime="false" classpathref="classpath"/>
+    </target>
+
+    <target name="build" depends="compile">
+        <jar destfile="${build}/${name}.jar" basedir="${classes}">
+            <manifest>
+                <attribute name="Main-Class" value="${Main-Class}"/>
+                <attribute name="Package-Version" value="${Package-Version}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="clean">
+        <delete dir="${build}"/>
+        <delete dir="${tmp}"/>
+    </target>
+
+    <target name="test" depends="build">
+        <junit fork="true">
+            <classpath>
+                <pathelement location="${lib}/${JUnit}"/>
+                <pathelement location="${classes}"/>
+                <path refid="classpath"/>
+            </classpath>
+            <test name="${testname}" todir="${reports}">
+                <formatter type="plain" usefile="false"/>
+            </test>
+        </junit>
+    </target>
+
+    <target name="music" depends="build">
+        <sound>
+            <success source="${Success}"/>
+            <fail source="${Fail}"/>
+        </sound>
+    </target>
+
+    <target name="diff">
+        <exec executable="svn" outputproperty="svn_log">
+            <arg value="diff"/>
+        </exec>
+        <ac:for list="${diffList}" param="file" keepgoing="true">
+            <sequential>
+                <echo message="Looking for changes" />
+                <condition property="FoundInDiffLog">
+                    <matches pattern="@{file}" string="${svn_log}"/>
+                </condition>
+                <property name="foundDiff" value="yes"/>
+            </sequential>
+        </ac:for>
+        <fail message="Nothing has changed" unless="FoundInDiffLog"/>
+        <antcall target="diffCommit" />
+    </target>
+
+    <target name="diffCommit"  if="${FoundInDiffLog}">
+        <exec executable="svn">
+            <arg value="add"/>
+            <arg value="*"/>
+            <arg value="--force"/>
+        </exec>
+        <exec executable="svn">
+            <arg value="commit"/>
+            <arg value="-m ' ${TODAY_RU} : Auto commit by ${user} ${name}'"/>
+            <arg value="--username=${user}"/>
+        </exec>
+    </target>
+
+    <target name="war" depends="compile" >
+        <war destfile="${build}/${name}.war" webxml="${webXML}">
+            <manifest>
+                <attribute name="Main-Class" value="${Main-Class}"/>
+                <attribute name="Package-Version" value="${Package-Version}"/>
+            </manifest>
+            <fileset dir="${web}"/>
+            <lib dir="${lib}">
+                <exclude name="${exclude}"/>
+            </lib>
+            <lib dir="${mainLibs}"/>
+            <classes dir="${classes}"/>
+        </war>
+    </target>
+
+</project>

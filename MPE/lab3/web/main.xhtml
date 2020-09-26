@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+    <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/default/img/favicon.png"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>ЪУЪ ДАЙТЕ ЛК ЪУЪ</title>
+    <h:outputStylesheet library="default" name="styles/main.css"/>
+    <h:outputStylesheet library="default" name="styles/main-result.css"/>
+</h:head>
+
+<h:body>
+
+    <div class="header">
+        <div class="container">
+            <div class="retrowave">
+                <div>
+                    Барсуков Илья Александрович, вариант 201041
+                </div>
+
+                <div class="header__to_start_link retrowave">
+                    <h:form>
+                        <h:commandLink value="На стартовую" action="index?faces-redirect=true"/>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="container">
+            <div class="graph-view-wr">
+                <p:panel styleClass="panel">
+                    <div id="canvas-wrapper">
+                        <c:forEach var="result" items="#{collectionBean.all}">
+                            <div data-x="#{result.x}" data-y="#{result.y}" data-hit="#{result.hit}"></div>
+                        </c:forEach>
+                    </div>
+                </p:panel>
+
+                <div class="panel">
+                    <div class="panel__title">Предыдущие 100 результатов</div>
+                    <div class="panel__content">
+                        <h:dataTable styleClass="results" value="#{collectionBean.all}" var="point">
+                            <h:column>
+                                <f:facet name="header">ъXъ</f:facet>
+                                #{point.x}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">wrYyyyy</f:facet>
+                                #{point.y}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">аRrrrr</f:facet>
+                                #{point.r}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Попали?</f:facet>
+                                #{point.hit ? "Есть пробитие":"Наводчик контужен"}
+                            </h:column>
+                        </h:dataTable>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <h:form id="form">
+                    <p:panel styleClass="panel flex-column-inner">
+                        <label class="panel__title">Координата X</label>
+                        <h:commandButton  value="-3" onchange="this.checked ? selectedX(-3) : deselectedX(-3)"/>
+                        <h:commandButton  value="-2" onchange="this.checked ? selectedX(-2) : deselectedX(-2)"/>
+                        <h:commandButton  value="-1" onchange="this.checked ? selectedX(-1) : deselectedX(-1)"/>
+                        <h:commandButton  value="0" onchange="this.checked ? selectedX(0) : deselectedX(0)"/>
+                        <h:commandButton  value="1" onchange="this.checked ? selectedX(1) : deselectedX(1)"/>
+                        <h:commandButton  value="2" onchange="this.checked ? selectedX(2) : deselectedX(2)"/>
+                        <h:commandButton  value="3" onchange="this.checked ? selectedX(3) : deselectedX(3)"/>
+                        <h:inputHidden id="x-hidden" value="#{mainBean.x}"/>
+                    </p:panel>
+
+                    <p:panel styleClass="panel">
+                        <label class="panel__title">Координата Y</label>
+                        <p:inputText
+                                placeholder="(-3; 5)"
+                                value="#{mainBean.y}"
+                                id="y"
+                                onchange="onYChanged(this.value)"
+                                required="true"/>
+                    </p:panel>
+
+                    <p:panel styleClass="panel">
+                        <label class="panel__title">R</label>
+                        <p:selectOneRadio id="r" value="#{mainBean.r}" required="true" onchange="onRChanged(this.value)" styleClass="margin-auto">
+                            <f:selectItem itemValue="1" itemLabel="1"/>
+                            <f:selectItem itemValue="1.5" itemLabel="1.5"/>
+                            <f:selectItem itemValue="2" itemLabel="2"/>
+                            <f:selectItem itemValue="2.5" itemLabel="2.5"/>
+                            <f:selectItem itemValue="3" itemLabel="3"/>
+                        </p:selectOneRadio>
+                    </p:panel>
+
+                    <div class="panel hidden err-msg" id="err-msg"></div>
+                    <!-- плакало половина итмо-->
+                    <h:commandButton    styleClass="submit-btn"
+                                        value="ису(с)"
+                                        id="submit-btn"
+                                        onclick="return onSubmit();"
+                                        action="#{mainBean.create}"/>
+                    плакала половина итмо
+                </h:form>
+            </div>
+        </div>
+    </div>
+    <h:outputScript library="default" name="scripts/grapher.js" />
+    <h:outputScript library="default" name="scripts/main.js" />
+</h:body>
+
+</html>

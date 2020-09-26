@@ -1,0 +1,136 @@
+.retrowave {
+    text-transform: uppercase;
+    background: linear-gradient(to top, #e20ccc 35%, #c646ff 50%, #26c1f1 15%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+*{
+    box-sizing: border-box;
+    cursor: url("../img/Retrowave.cur"),default;
+    font-family: "Comic Sans MS", sans-serif;
+}
+body{
+    margin: 0;
+    background: url("../img/background.gif") no-repeat center top fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-size: 16px;
+}
+
+.header {
+    background: #eb0087;
+    font-family: monospace;
+    color: #8a05ba;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.header_wr .header a {
+    color: #8a05ba;
+}
+
+.header__to_start_link {
+    margin-left: 100px;
+    text-decoration: none;
+}
+
+.flex-column-inner > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.hidden {
+    display: none;
+}
+
+.content {
+    padding-top: 25px;
+}
+
+.graph-view {
+    width: 500px;
+    height: 500px;
+    margin: 0 50px;
+    user-select: none;
+}
+
+.panel {
+    background: #8a05ba;
+    padding: 10px;
+    border: none;
+    margin: 5px 5px 10px 5px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, .2);
+}
+
+.err-msg {
+    color: darkred;
+}
+
+.panel__title {
+    text-align: center;
+    display: inline-block;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+#canvas-wrapper canvas {
+    width: 100%;
+}
+
+.panel__content {
+    display: flex;
+    justify-content: space-around;
+}
+
+.x_input {
+    text-align: center;
+}
+
+.content > .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.submit-btn {
+    background: #ff0000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 24px;
+    max-width: 70%;
+    margin: auto;
+    display: block;
+    padding: 10px 20px;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, .1);
+    transition: box-shadow 300ms, background 300ms;
+    outline: none;
+}
+
+.submit-btn:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+}
+
+.submit-btn:active {
+    background: rgb(255, 0, 0);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .4);
+}
+
+.graph-view-wr {
+    flex: 3;
+}
+
+.margin-auto {
+    margin: auto;
+}
+
+.controls {
+    flex: 2;
+}

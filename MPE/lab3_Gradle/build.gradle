@@ -1,0 +1,166 @@
+import ru.zelourses.BadWords.BadWordsPlugin
+
+import javax.sound.sampled.AudioInputStream
+import javax.sound.sampled.AudioSystem
+import javax.sound.sampled.Clip
+import org.apache.tools.ant.taskdefs.condition.Os
+
+import java.time.ZonedDateTime
+
+buildscript {
+    repositories {
+    }
+    dependencies {
+        classpath files('jarlibs/BadWords-1.0.0.jar')//важная вещь, только так можно подключить локальные плагины,
+                                                    //безо всяких локальных репозиториев
+    }
+}
+
+plugins {
+    id 'war'
+}
+
+repositories {
+    // Use jcenter for resolving dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    maven { url 'https://repository.jboss.org/nexus/content/groups/public-jboss' }
+    maven { url 'https://repository.jboss.org/nexus/content/repositories' }
+    maven { url 'https://repository.jboss.org/nexus/content/repositories/thirdparty-releases' }
+    mavenCentral()
+}
+apply plugin: BadWordsPlugin
+dependencies {
+    // This dependency is used by the application.
+    implementation 'com.google.guava:guava:29.0-jre'
+
+    // Use JUnit test framework
+    testImplementation 'junit:junit:4.13'
+
+    // https://mvnrepository.com/artifact/org.wildfly/wildfly-jsf
+    compile group: 'org.wildfly', name: 'wildfly-jsf', version: '18.0.1.Final'
+
+    implementation 'javax.enterprise:cdi-api:2.0.SP1'
+    implementation 'mysql:mysql-connector-java:5.1.25'
+    implementation 'org.hibernate:hibernate-core:6.0.0.Alpha2'
+    implementation 'org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final'
+    implementation 'org.hibernate:hibernate-commons-annotations:3.2.0.Final'
+    implementation 'org.hibernate:hibernate-agroal:5.4.8.Final'
+    implementation 'org.primefaces:primefaces:7.0'
+}
+
+BadWords{
+    getDefinition()
+    .addRule("321","TEST")//первое-на что заменяем, второе- что заменяем
+    .addRule("фолдер","papka")
+    includes = ['TEST'] //Тут задаётся файл либо какая-нибудь папка. И вроде как путь должен быть от начала проекта.
+
+}
+
+defaultTasks 'my_compile'
+
+task my_compile{
+    dependsOn 'build'
+}
+task my_build{
+    dependsOn 'my_compile', 'war'
+}
+task my_clean {
+    dependsOn 'clean'
+}
+task my_test {
+    dependsOn 'test'
+}
+task my_music{
+    dependsOn 'my_build'
+    doLast {
+
+        gradle.buildFinished { buildResult ->
+            Random r = new Random()
+            if (buildResult.failure){
+                def count = new File(rootProject.projectDir.toString()+fail).listFiles().findAll().size()
+
+                count = Math.abs(r.nextInt() % count)+1
+                println 'playing sound of failure: '+count
+                Clip clip = AudioSystem.getClip()
+
+                AudioInputStream inputStream =
+                        AudioSystem.getAudioInputStream(rootProject.projectDir.toString()+fail+'/'+count+'.wav' as File)
+                clip.open(inputStream)
+                clip.loop(0)
+                return 0;
+            }else{
+                def count = new File(rootProject.projectDir.toString()+success).listFiles().findAll().size()
+
+                count = Math.abs(r.nextInt() % count)+1
+                println 'playing sound of success: ' + count
+                Clip clip = AudioSystem.getClip()
+                AudioInputStream inputStream =
+                        AudioSystem.getAudioInputStream(rootProject.projectDir.toString()+success+'/'+count+'.wav' as File)
+                clip.open(inputStream)
+                clip.loop(0)
+                return 0;
+            }
+
+        }
+    }
+}
+
+task my_diff() {
+    doFirst{
+        String[] tmp =diffList.split(",")
+
+        new ByteArrayOutputStream().withStream { os ->
+            def result = exec {
+                if (Os.isFamily(Os.FAMILY_WINDOWS)){
+                    executable = 'cmd'
+                    args = ['/c','svn','diff']
+                }else { //не уверен что это сработает, скроее всего скрипт упадёт, если он не будет в проекте с активным svn
+                    executable = 'svn'
+                    args = ['svn','diff']
+                }
+                standardOutput = os
+            }
+            ext.out = os.toString()
+        }
+
+        String tmp_out = ext.out
+
+        boolean found = false;
+        boolean nothing_changed = true;
+
+        for (int i=0;i<tmp.size();++i){
+            if(tmp_out.contains(tmp[i])){
+                println 'Found changes that touch our excluded files'
+                found = true;
+                break;
+            }else if (tmp_out.toLowerCase().contains("\\+++") || tmp_out.toLowerCase().contains("---")){
+                nothing_changed = false;
+                break;
+            }
+        }
+        if (!found && !nothing_changed){
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            def t = exec{
+                standardOutput=stream
+                if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                    executable = 'cmd'
+                    args = ['/c', 'svn', 'add', '*', '--force']
+                    executable = 'cmd'
+                    args = ['/c', 'svn', 'commit', '-m', 'AUTO COMMIT' + ZonedDateTime.now() + ' by ' + username, ('--username=' + username)]
+                }else {
+                    executable = 'svn'
+                    args = [ 'add', '*', '--force']
+                    executable = 'svn'
+                    args = ['commit', '-m', 'AUTO COMMIT' + ZonedDateTime.now() + ' by ' + username, ('--username=' + username)]
+                }
+            }
+            println 'Changes was committed'
+        }else if (!nothing_changed && found){
+            println 'excluded files was changed, auto commit canceled'
+        }
+        else if (nothing_changed) {
+            println 'Nothing to change'
+        }
+    }
+
+}
