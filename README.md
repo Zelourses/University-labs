@@ -14,3 +14,6 @@
 
 [Web](https://github.com/Zelourses/University-labs/tree/master/Web) - 
 Репозиторий, содержащий лабораторные работы по предмету "Программирование интернет-приложений"
+
+[OS](https://github.com/Zelourses/University-labs/tree/master/OS) - 
+Репозиторий, который содержит лабораторные по предмету "Операционные системы"
