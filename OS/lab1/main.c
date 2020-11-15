@@ -311,13 +311,3 @@ int main(/* int argc, char *argv[] */void){
     }
     
 }
-
-typedef struct aaa{
-    int a;
-}aaa;
-
-aaa vvv = {.a = 10};
-
-void bbb(aaa* aa){
-    printf("here: %d",aa->a);
-}
