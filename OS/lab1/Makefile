@@ -1,4 +1,4 @@
-CFLAGS= -Wall -Wextra -pthread -g -pedantic -pie $(OPTFLAGS)
+CFLAGS= -Wall -Wextra -pthread -g3 -fno-omit-frame-pointer -pedantic $(OPTFLAGS)
 
 SOURCES=$(wildcard *.c)
 OBJECTS=$(patsubst %.c, %.o, $(SOURCES))
