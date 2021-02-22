@@ -17,3 +17,5 @@
 
 [OS](https://github.com/Zelourses/University-labs/tree/master/OS) - 
 Репозиторий, который содержит лабораторные по предмету "Операционные системы"
+[Low level Programming](https://github.com/Zelourses/University-labs/tree/master/LowLevelProgramming) - 
+Репозиторий, содержащий лабораторные работы по предмету "Низкоуровневое программирование"
