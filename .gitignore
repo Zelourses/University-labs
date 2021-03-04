@@ -1,0 +1,11 @@
+#VS code folder
+.vscode
+
+#build folder
+out
+
+#Executable file
+lab
+
+#NTFS file
+/ntfs*
