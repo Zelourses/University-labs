@@ -64,5 +64,17 @@ typedef struct __attribute__((packed)) PBSector {
     le16 end_of_sector_marker;
 }PBSector;
 
+typedef struct __attribute__((__packed__)) ntfs_mft_record{
+    uint32_t magic;
+    uint16_t usa_ofs;
+    uint16_t usa_count;
+    uint64_t lsn;
+    uint16_t seq_no;
+    uint16_t link_count;
+    uint16_t attrs_offset;
+    uint16_t flags;     /* MFT record flags , 0x01 - in use, 0x02 - directory*/
+    //TODO: change it all to normal, not copied from linux sources    
+}ntfs_mft_record;
+
 
 #endif
