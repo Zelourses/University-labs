@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group 'ru.SoftwareTesting'
+version '0.0.1'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    //testCompile("org.junit.jupiter:junit-jupiter-params:5.7.0")
+}
+
+test {
+    useJUnitPlatform()
+}
