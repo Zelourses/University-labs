@@ -3,6 +3,10 @@
 !*/
 !*.*
 !LICENSE
+
+# Temp. files
+*.tmp
+
 ### Java template
 # Compiled class file
 *.class
@@ -54,6 +58,17 @@ hs_err_pid*
 # Gradle
 .idea/**/gradle.xml
 .idea/**/libraries
+.gradle
+**/build/
+!src/**/build/
+gradle
+gradlew*
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Cache of project
+.gradletasknamecache
 
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
@@ -160,6 +175,10 @@ fabric.properties
 *.pdb
 *.stp
 
+# Low-level things
+*.asm
+LowLevelProgramming/lab1/test.py
+
 # Kernel Module Compile Results
 *.mod*
 *.cmd
@@ -181,3 +200,12 @@ dkms.conf
 /**/flameGraph
 /**/sounds
 /MPE/lab4/
+
+#Junk files
+MANIFEST.MF
+*.jpg
+*.png
+*.uxf
+/Programming/**/*.json
+/Programming/**/*.csv
+/SoftwareTesting/lab2/**/*.csv
