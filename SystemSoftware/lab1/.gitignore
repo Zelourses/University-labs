@@ -1,0 +1,13 @@
+#IDE folders
+.vscode
+.idea
+
+#build folder
+out
+cmake-build-debug
+
+#Executable file
+lab
+
+#NTFS file
+/ntfs*
