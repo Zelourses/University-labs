@@ -1,0 +1,98 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <groupId>SPO_labs</groupId>
+    <artifactId>lab2</artifactId>
+    <version>0.1</version>
+    <modelVersion>4.0.0</modelVersion>
+
+    <properties>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <JNIClasses>ru/JNI/*.java</JNIClasses>
+        <GeneratedHeadersDir>${project.basedir}/target/generated-sources/c/include</GeneratedHeadersDir>
+        <Makefile>${project.basedir}/src/main/c/Makefile</Makefile>
+
+        <ObjectFilesDir>${project.basedir}/target/objects</ObjectFilesDir>
+        <SharedObject>${project.build.outputDirectory}/lib/linux/NTFS.so</SharedObject>
+
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>ru.MainClass</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <executions>
+                    <execution>
+                        <id>jni-headers</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <includes>
+                                <include>${JNIClasses}</include>
+                            </includes>
+                            <compilerArgs>
+                                <arg>-h</arg>
+                                <arg>${GeneratedHeadersDir}/JNI</arg>
+                            </compilerArgs>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <executions>
+                    <execution>
+                        <id>build-shared-object</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>make</executable>
+                            <workingDirectory>${project.basedir}/src/main/c</workingDirectory>
+                            <arguments>
+                                <argument>-f</argument>
+                                <argument>${Makefile}</argument>
+                                <argument>GENERATED_HEADERS_DIR=${GeneratedHeadersDir}</argument>
+                                <argument>OBJECTS_DIR=${ObjectFilesDir}</argument>
+                                <argument>SHARED_OBJECT=${SharedObject}</argument>
+                                <argument>shared_object</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
