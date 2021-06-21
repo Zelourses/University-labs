@@ -1,0 +1,3 @@
+[submodule "CircuitDesign/lab4/schoolMIPS"]
+	path = CircuitDesign/lab4/schoolMIPS
+	url = https://github.com/MIPSfpga/schoolMIPS
